@@ -1,2 +1,133 @@
-<p>form works!</p>
-<label>NOM</label>
+
+
+
+<p>
+
+    <label for="Civilite">Civilité</label>
+        <select id="Civilite" placeholder="Civilité" required>
+            <option selected disabled value="">...</option>
+            <option>Madame</option>
+            <option>Monsieur</option>
+            <option>Autre</option>
+        </select>
+</p>
+
+<p>
+    <label for="Nom">Nom</label>
+    <input type="text" id="Nom" placeholder="Dupont" required>
+</p>
+
+<p>
+    <label for="Prenom">Prenom</label>
+    <input type="text" id="Prenom" placeholder="Jean-Michel" required>
+</p>
+
+<p>
+    <label for="Email" >Email</label>       
+    <input type="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}"  id="Email" placeholder="something@gmail.com"  required>                            
+</p>
+
+<p>
+    <label for="Ville">Ville</label>
+    <input type="text" pattern="[a-zA-Z ,.'-]{1,}" id="Ville" placeholder="Strasbourg" required>
+</p>
+
+<p>
+    <label for="CP" >Code Postal</label>
+    <input type="text" pattern="[0-9]{5}" id="CP" placeholder="67000" required>
+</p>
+
+<p>
+    <label for="NumeroVoie" > N° de Voie </label>
+    <input type="text" pattern="[0-9]{1,4}" id="NumeroVoie" placeholder="123"  required >
+</p>
+
+<p>
+    <label for="IndiceDeRepetition"  placeholder="Indice de répétition"> </label>
+      <select  id="IndiceDeRepetition">
+      <option selected disabled value="">Indice de répétition</option>
+      <option> </option>
+      <option>bis</option>
+      <option>ter</option>
+      <option>quater</option>
+      <option>quinquies</option>
+    </select>
+</p>
+
+<p>
+    <label for="Voie" class="form-label">Type de Voie</label>
+    <select class="form-select" id="Voie" required>
+      <option selected disabled value="">...</option>
+      <option>Allée</option>
+      <option>Avenue</option>
+      <option>Boulevard</option>
+      <option>Carrefour</option>
+      <option>Chemin</option>
+      <option>Chaussée</option>
+      <option>Cité</option>
+      <option>Corniche</option>
+      <option>Cours</option>
+      <option>Domaine</option>
+      <option>Descente</option>
+      <option>Ecart</option>
+      <option>Esplanade</option>
+      <option>Faubourg</option>
+      <option>Grande Rue</option>
+      <option>Hameau</option>
+      <option>Halle</option>
+      <option>Impasse</option>
+      <option>Lieu-Dit</option>
+      <option>Lotissement</option>
+      <option>Marché</option>
+      <option>Montée</option>
+      <option>Passage</option>
+      <option>Place</option>
+      <option>Plaine</option>
+      <option>Plateau</option>
+      <option>Promenade</option>
+      <option>Parvis</option>
+      <option>Quartier</option>
+      <option>Quai</option>
+      <option>Résidence</option>
+      <option>Ruelle</option>
+      <option>Rocade</option>
+      <option>Rond-Point</option>
+      <option>Route</option>
+      <option>Rue</option>
+      <option>Sente-Sentier</option>
+      <option>Square</option>
+      <option>Terre-Plein</option>
+      <option>Traverse</option>
+      <option>Villa</option>
+      <option>Village</option>
+    </select>
+</p>
+
+<p>
+    <label for="NomDeVoie">Nom de voie </label>
+    <input type="text" id="NomDeVoie" placeholder="De la Haye" required>
+</p>
+
+<p>
+    <label for="Login" class="form-label"> Login </label>
+    <input type="text" id="Login" placeholder="Hyana" required>
+</p>
+
+<p>
+    <label for="Password" class="form-label"> Password </label>
+    <input type="password" id="Password" placeholder="**********"required>
+</p>
+
+<p>
+    <label for="Telephone" class="form-label">Telephone</label>
+    <input type="text" pattern="[0-9]{10}" class="form-control" id="Telephone" placeholder="0706060606" required>
+</p>
+
+<p>
+    <input class="form-check" type="checkbox" required>
+      <label class="form-check-label" for="invalidCheck3">
+        Agree to terms and conditions
+      </label>
+</p>
+
+<button class="btn btn-primary" type="submit">Envoyer le formulaire</button>

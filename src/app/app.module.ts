@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
-import { AdresseComponent } from './adresse/adresse.component';
+import { ValidationComponent } from './validation/validation.component';
+import { TertiaireComponent } from './tertiaire/tertiaire.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    AdresseComponent
+    ValidationComponent,
+    TertiaireComponent
   ],
   imports: [
     BrowserModule,
