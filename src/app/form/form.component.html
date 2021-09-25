@@ -1,133 +1,66 @@
+<div class="card m-3">
+    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Civilité</label>
+                    <select formControlName="Civilite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Civilite.errors }">
+                        <option value=""></option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    
+                        <div *ngIf="f.Civilite.errors?.required" class="invalid-feedback">Title is required</div>
+                    
+                </div>
+                <div class="form-group col-5">
+                    <label>First Name</label>
+                    <input type="text" formControlName="Nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Nom.errors }" />
+                        <div *ngIf="Nom.errors?.required" class="invalid-feedback">First Name is required</div>                   
+                </div>
+            </div>
+                <div class="form-group">
+                    <label>Prenom</label>
+                    <input type="text" formControlName="Prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Prenom.errors }" />             
+                        <div *ngIf="f.Prenom.errors?.required" class="invalid-feedback">Vous devez saisir un Prénom!</div>  
+                        <div class="valid-feedback"> nice!</div>            
+                </div>
+            
 
-
-
-<p>
-
-    <label for="Civilite">Civilité</label>
-        <select id="Civilite" placeholder="Civilité" required>
-            <option selected disabled value="">...</option>
-            <option>Madame</option>
-            <option>Monsieur</option>
-            <option>Autre</option>
-        </select>
-</p>
-
-<p>
-    <label for="Nom">Nom</label>
-    <input type="text" id="Nom" placeholder="Dupont" required>
-</p>
-
-<p>
-    <label for="Prenom">Prenom</label>
-    <input type="text" id="Prenom" placeholder="Jean-Michel" required>
-</p>
-
-<p>
-    <label for="Email" >Email</label>       
-    <input type="email" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}"  id="Email" placeholder="something@gmail.com"  required>                            
-</p>
-
-<p>
-    <label for="Ville">Ville</label>
-    <input type="text" pattern="[a-zA-Z ,.'-]{1,}" id="Ville" placeholder="Strasbourg" required>
-</p>
-
-<p>
-    <label for="CP" >Code Postal</label>
-    <input type="text" pattern="[0-9]{5}" id="CP" placeholder="67000" required>
-</p>
-
-<p>
-    <label for="NumeroVoie" > N° de Voie </label>
-    <input type="text" pattern="[0-9]{1,4}" id="NumeroVoie" placeholder="123"  required >
-</p>
-
-<p>
-    <label for="IndiceDeRepetition"  placeholder="Indice de répétition"> </label>
-      <select  id="IndiceDeRepetition">
-      <option selected disabled value="">Indice de répétition</option>
-      <option> </option>
-      <option>bis</option>
-      <option>ter</option>
-      <option>quater</option>
-      <option>quinquies</option>
-    </select>
-</p>
-
-<p>
-    <label for="Voie" class="form-label">Type de Voie</label>
-    <select class="form-select" id="Voie" required>
-      <option selected disabled value="">...</option>
-      <option>Allée</option>
-      <option>Avenue</option>
-      <option>Boulevard</option>
-      <option>Carrefour</option>
-      <option>Chemin</option>
-      <option>Chaussée</option>
-      <option>Cité</option>
-      <option>Corniche</option>
-      <option>Cours</option>
-      <option>Domaine</option>
-      <option>Descente</option>
-      <option>Ecart</option>
-      <option>Esplanade</option>
-      <option>Faubourg</option>
-      <option>Grande Rue</option>
-      <option>Hameau</option>
-      <option>Halle</option>
-      <option>Impasse</option>
-      <option>Lieu-Dit</option>
-      <option>Lotissement</option>
-      <option>Marché</option>
-      <option>Montée</option>
-      <option>Passage</option>
-      <option>Place</option>
-      <option>Plaine</option>
-      <option>Plateau</option>
-      <option>Promenade</option>
-      <option>Parvis</option>
-      <option>Quartier</option>
-      <option>Quai</option>
-      <option>Résidence</option>
-      <option>Ruelle</option>
-      <option>Rocade</option>
-      <option>Rond-Point</option>
-      <option>Route</option>
-      <option>Rue</option>
-      <option>Sente-Sentier</option>
-      <option>Square</option>
-      <option>Terre-Plein</option>
-      <option>Traverse</option>
-      <option>Villa</option>
-      <option>Village</option>
-    </select>
-</p>
-
-<p>
-    <label for="NomDeVoie">Nom de voie </label>
-    <input type="text" id="NomDeVoie" placeholder="De la Haye" required>
-</p>
-
-<p>
-    <label for="Login" class="form-label"> Login </label>
-    <input type="text" id="Login" placeholder="Hyana" required>
-</p>
-
-<p>
-    <label for="Password" class="form-label"> Password </label>
-    <input type="password" id="Password" placeholder="**********"required>
-</p>
-
-<p>
-    <label for="Telephone" class="form-label">Telephone</label>
-    <input type="text" pattern="[0-9]{10}" class="form-control" id="Telephone" placeholder="0706060606" required>
-</p>
-
-<p>
-    <input class="form-check" type="checkbox" required>
-      <label class="form-check-label" for="invalidCheck3">
-        Agree to terms and conditions
-      </label>
-</p>
-
-<button class="btn btn-primary" type="submit">Envoyer le formulaire</button>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="f.email.errors?.required" class="invalid-feedback">Veuillez saisir un email!</div>
+            </div>
+            <div class="form-group">
+                <label>Login</label>
+                <input type="text" formControlName="Login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Login.errors }" />
+                <div *ngIf="f.Login.errors?.required" class="invalid-feedback">Veuillez saisir un Login!</div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="f.password.errors?.required" class="invalid-feedback">Veuillez saisir un mot de passe !</div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="f.password.errors?.required" class="invalid-feedback">Veuillez  confirmer votre mot de passe !</div>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
