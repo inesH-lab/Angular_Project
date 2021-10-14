@@ -1,66 +1,91 @@
 <div class="card m-3">
-    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    
+    <h5 class="card-header">Formulaire Client</h5>
     <div class="card-body">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+       
+        <form  #registerForm="ngForm"   (ngSubmit)="onSubmit()"  >
             <div class="form-row">
-                <div class="form-group col">
-                    <label>Civilité</label>
-                    <select formControlName="Civilite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Civilite.errors }">
-                        <option value=""></option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Miss">Miss</option>
-                        <option value="Ms">Ms</option>
-                    </select>
+               
+                <div class="form-group col-5">
                     
-                        <div *ngIf="f.Civilite.errors?.required" class="invalid-feedback">Title is required</div>
+                    <label for="Nom">Nom</label>
+                    <input type="text"  [appTesting]="validation()" name="Nom" id="Nom" class="form-control" [(ngModel)]="Nom"  placeholder="Nom" required/>
+                     
+                        
+                
+                    </div>
+                 
+                
+            </div>
+                <div class="form-group col-5">
+                    <label for ="Prenom">Prenom</label>
+                    <input type="text" id="Prenom" name="Prenom" class="form-control" [(ngModel)]="Prenom" placeholder="Prenom" required/>             
+                        <div class="invalid-feedback">Veuillez saisir un prénom uniquement composé de lettres!</div>  
+                                   
+                </div>
+            
+                <div class="form-group col-5">
+                    <label>Pays</label>
+                    <input type="text" id="Pays" name="Pays" class="form-control" [(ngModel)]="Pays" placeholder="Pays"/>
+                    <div class="invalid-feedback">Veuillez saisir un Pays valide!</div>
+                </div>
+                <div class="form-group col-5">
+                    <label>Email</label>
+                    <span id="inputGroupPrepend3">@</span>
+                    <input type="Email" formControlName="Email" class="form-control" [(ngModel)]="Email" placeholder="Email" />
                     
                 </div>
                 <div class="form-group col-5">
-                    <label>First Name</label>
-                    <input type="text" formControlName="Nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Nom.errors }" />
-                        <div *ngIf="Nom.errors?.required" class="invalid-feedback">First Name is required</div>                   
+                    <label>Login</label>
+                    <input type="Login" formControlName="Login" class="form-control" [(ngModel)]="Login" placeholder="Login"/>
+                    
                 </div>
+            <div class="form-group col-5">
+                <label>Adresse</label>
+                <input type="text" formControlName="Adresse" class="form-control" placeholder="Adresse" [(ngModel)]="Adresse"/>
+                
             </div>
-                <div class="form-group">
-                    <label>Prenom</label>
-                    <input type="text" formControlName="Prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Prenom.errors }" />             
-                        <div *ngIf="f.Prenom.errors?.required" class="invalid-feedback">Vous devez saisir un Prénom!</div>  
-                        <div class="valid-feedback"> nice!</div>            
-                </div>
-            
-
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                <div *ngIf="f.email.errors?.required" class="invalid-feedback">Veuillez saisir un email!</div>
+           
+            <div class="form-group col-5">
+                <label>Code Postal</label>
+                <input type="text" formControlName="CP" class="form-control" placeholder="Code Postal" [(ngModel)]="CP"/>
+               
             </div>
-            <div class="form-group">
-                <label>Login</label>
-                <input type="text" formControlName="Login" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Login.errors }" />
-                <div *ngIf="f.Login.errors?.required" class="invalid-feedback">Veuillez saisir un Login!</div>
+            <div class="form-group col-5">
+                <label>Ville</label>
+                <input type="text" formControlName="Ville" class="form-control" placeholder="Ville" [(ngModel)]="Ville" />
+                
             </div>
-            <div class="form-row">
+            <div class="form-group col-5">
+                <label>Telephone</label>
+                <input type="text" formControlName="Telephone" class="form-control" placeholder="Telephone" [(ngModel)]="Telephone"/>
+               
+            </div>
+            <div class="form-row col-5">
                 <div class="form-group col">
                     <label>Password</label>
-                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                    <div *ngIf="f.password.errors?.required" class="invalid-feedback">Veuillez saisir un mot de passe !</div>
+                    <input type="Password" formControlName="Password" class="form-control" placeholder="Password" [(ngModel)]="Password" />
+                         
                 </div>
-                <div class="form-group col"> 
-                    <label>Confirm Password</label>
-                    <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                    <div *ngIf="f.password.errors?.required" class="invalid-feedback">Veuillez  confirmer votre mot de passe !</div>
-                </div>
+                
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
-                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+                
+                <label for="acceptTerms" class="form-check-label"><input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"  />Accept Terms & Conditions</label>
+              
             </div>
             <div class="text-center">
-                <button class="btn btn-primary mr-1">Register</button>
+                <button type="submit" id="form-submit" class="btn btn-primary mr-1" (click)="onSubmit()">Register</button>
                 <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
             </div>
         </form>
     </div>
-</div>
+    </div>
+
+<app-validation [valid]="valid" [Nom]="Nom" [Prenom] = "Prenom" [Pays]="Pays" >
+    
+    [valid] = "valid"
+    {{Nom}}
+    [Nom] = "Nom"
+    [Prenom] = "Prenom"
+</app-validation>

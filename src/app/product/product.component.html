@@ -1,0 +1,26 @@
+<p>product works!</p>
+
+
+ <input type="text" class="form-control" [(ngModel)]="searchText" 
+ placeholder="Search">
+
+  <table class="table table-hover">
+  <thead>
+    <tr> 
+      <th scope="col">Product Name</th>
+      <th scope="col"> Prix</th>
+      <th scope="col">info</th>
+      <th scope="col">detail</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let product of ProductList | filter:searchText">
+    <tr class="table-active">
+      <td> {{product.name}}</td>
+      <td>{{product.detail}}</td>
+      <td>{{product.info}}</td>
+      <td>{{product.price}}</td>       
+    </tr>
+  </tbody>
+</table>
+  
+

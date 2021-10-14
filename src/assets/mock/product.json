@@ -1,0 +1,21 @@
+[{
+	"name": "hero Product",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "99",
+	"hero": "OMG This just came out today!",
+	"image": "http://placehold.it/940x300/999/CCC"
+},
+{
+	"name": "CMONPROD",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "100",
+	"hero": "NICE!",
+	"image": "http://placehold.it/940x300/999/CCC"
+},
+{
+	"name": "Product 1",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "99",
+	"info": "This is the latest and greatest product from Derp corp.",
+	"image": "http://placehold.it/300x300/999/CCC"
+}]

@@ -1,0 +1,27 @@
+.card-body{
+    background-color:slategrey;
+}
+input{
+    background-color:powderblue;
+
+}
+div{
+    align-content: center;
+}
+.h5{
+    align-content: center;
+    text-align: center;
+
+}
+.Civilite{
+    background-color: powderblue;
+}
+.acceptTerms{
+    align-content: center;
+}
+label{
+    color:white;
+}
+.card-header{
+    align-content: center;
+}
