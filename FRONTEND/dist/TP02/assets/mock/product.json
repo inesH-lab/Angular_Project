@@ -1,0 +1,36 @@
+[{
+	"name": "hero Product",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "99",
+	"category": "meal",
+	"id": "7",
+	"info": "OMG This just came out today!",
+	"image": "http://placehold.it/940x300/999/CCC"
+},
+{
+	"name": "CMONPROD",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "100",
+	"category": "cake",
+	"id": "8",
+	"info": "NICE!",
+	"image": "http://placehold.it/940x300/999/CCC"
+},
+{
+	"name": "test",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "300",
+	"category": "cake",
+	"id": "11",
+	"info": "noice!",
+	"image": "http://placehold.it/940x300/999/CCC"
+},
+{
+	"name": "Product 1",
+	"detail": "Lorem ipsum dolor sit amet",
+	"price": "99",
+	"category": "shampoo",
+	"id": "9",
+	"info": "This is the latest and greatest product from Derp corp.",
+	"image": "http://placehold.it/300x300/999/CCC"
+}]

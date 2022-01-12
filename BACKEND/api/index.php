@@ -14,8 +14,8 @@ $options = [
     "secure" => false,
     "algorithm" => ["HS256"],
     "secret" => JWT_SECRET,
-    "path" => ["/api"],
-    "ignore" => ["/api/login"],
+    //"path" => ["/api"],
+    //"ignore" => ["/api/login"],
     "error" => function ($response, $arguments) {
         $data["status"] = "error";
         $data["message"] = $arguments["message"];
@@ -29,7 +29,7 @@ function addHeaders($response) {
 
 
     $response = $response->withHeader("Content-Type", "application/json")
-        ->withHeader("Access-Control-Allow-Origin", "https://siteheroku.com")
+        ->withHeader("Access-Control-Allow-Origin", "https://projectangularines.herokuapp.com/auth")
         ->withHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
         ->withHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
         ->withHeader("Access-Control-Expose-Headers", "Authorization");
@@ -87,8 +87,8 @@ function postLogin($request, $response, $args) {
 }
 
 $app = AppFactory::create();
-$app->post('/api/login', 'postLogin');
-$app->get('/api/auth/{login}', 'getAuth');
+$app->post('api/auth', 'postLogin');
+$app->get('api/auth/{login}', 'getAuth');
 
 $app->add(new JwtAuthentication($options));
 
