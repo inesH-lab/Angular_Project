@@ -1,43 +1,47 @@
 <?php
-require '../projet/vendor/autoload.php';
-
-use Tuupola\Middleware\JwtAuthentication;
-use Firebase\JWT\JWT;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
+use Tuupola\Middleware\HttpBasicAuthentication;
+use \Firebase\JWT\JWT;
 
 const JWT_SECRET = "makey1234567";
 
+require __DIR__ . '/../vendor/autoload.php';
+
 $options = [
     "attribute" => "token",
-    "header" => "Authorization", 
+    "header" => "Authorization",
     "regexp" => "/Bearer\s+(.*)$/i",
     "secure" => false,
     "algorithm" => ["HS256"],
     "secret" => JWT_SECRET,
-    //"path" => ["/api"],
-    //"ignore" => ["/api/login"],
+    "path" => ["/api"],
+    "ignore" => ["/api/hello","/api/login","/api/createUser"],
     "error" => function ($response, $arguments) {
-        $data["status"] = "error";
-        $data["message"] = $arguments["message"];
-        return $response
-            ->withHeader("Content-Type", "application/json")
-            ->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
+        $response = $response->withStatus(401);
+        return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
     }
 ];
 
-function addHeaders($response) {
-
+function addHeaders(Response $response): Response {
+    /**
+     * @var string
+     */
+    $origin = 'herokuapp';
 
     $response = $response->withHeader("Content-Type", "application/json")
-        ->withHeader("Access-Control-Allow-Origin", "https://projectangularines.herokuapp.com/auth")
-        ->withHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
-        ->withHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
-        ->withHeader("Access-Control-Expose-Headers", "Authorization");
+    ->withHeader("Access-Control-Allow-Origin", "https://projectangularines.herokuapp.com/")
+    ->withHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
+    ->withHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
+    ->withHeader("Access-Control-Expose-Headers", "Authorization");
 
-    return $response;
+  return $response;
+
 }
-
-function createJWT($response, $login) {
+function createJWT ($login){
+    $userid="ines";
     $issuedAt = time();
     $expirationTime = $issuedAt + 600;
     $payload = array(
@@ -45,54 +49,57 @@ function createJWT($response, $login) {
         'iat' => $issuedAt,
         'exp' => $expirationTime
     );
+    $token_jwt = JWT::encode($payload,JWT_SECRET, "HS256");
 
-    $token_jwt = JWT::encode($payload, JWT_SECRET, "HS256");
-    $response = $response->withHeader("Authorization", "Bearer {$token_jwt}");
-    return $response;
+    return $token_jwt;
 }
 
 
-function getAuth($request, $response, $args) {
+function getClient($request, $response, $args)
+{
     $login = $args['login'];
-    if ($login) {
+    if($login){
         $data["login"] = $login;
+        $token_jwt = createJWT($login);
         $response = addHeaders($response);
-        $response = createJWT($response, $login);
-        $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
+        $response->getBody()->write(json_encode($data));
     }
-    else {
+    else{
         $response = $response->withStatus(401);
     }
 
     return $response;
 }
 
-function postLogin($request, $response, $args) {
+function postClient($request, $response, $args)
+{
     $body = $request->getParsedBody();
-    $login = $body['login'] ?? "";
-    $password = $body['password'] ?? "";
+    $login = $body["login"] ?? "";
+    $password = $body["password"] ?? "";
 
     $err = $login == "" || $password == "";
-    if (!$err){
+    if (!$err)
+    {
         $data["login"] = $login;
         $response = addHeaders($response);
-        $response = createJWT($response, $login);
-        $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        $token_jwt = createJWT($login);
+        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
+        $response->getBody()->write(json_encode($data));
     }
-    else {
+    else
+    {
         $response = $response->withStatus(401);
     }
-
-    return $response;
+    
+      return $response;
 }
 
+
 $app = AppFactory::create();
-$app->post('api/auth', 'postLogin');
-$app->get('api/auth/{login}', 'getAuth');
-
-$app->add(new JwtAuthentication($options));
-
+$app->post('/api/login', 'postClient');
+$app->get('/api/client/{login}', 'getClient');
+$app->add(new Tuupola\Middleware\JwtAuthentication($options));
+    
 $app->run();
-
-
 ?>
