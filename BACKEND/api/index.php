@@ -5,7 +5,7 @@ use Slim\Factory\AppFactory;
 use Tuupola\Middleware\HttpBasicAuthentication;
 use \Firebase\JWT\JWT;
 
-const JWT_SECRET = "makey1234567";
+const JWT_SECRET = "cnamapi";
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -29,10 +29,10 @@ function addHeaders(Response $response): Response {
     /**
      * @var string
      */
-    $origin = 'herokuapp';
+   // $origin = 'herokuapp';
 
     $response = $response->withHeader("Content-Type", "application/json")
-    ->withHeader("Access-Control-Allow-Origin", "https://projectangularines.herokuapp.com/")
+    ->withHeader("Access-Control-Allow-Origin", "http://localhost:4200")
     ->withHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
     ->withHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS")
     ->withHeader("Access-Control-Expose-Headers", "Authorization");
@@ -97,8 +97,9 @@ function postClient($request, $response, $args)
 
 
 $app = AppFactory::create();
-$app->post('/api/login', 'postClient');
 $app->get('/api/client/{login}', 'getClient');
+$app->post('/api/login', 'postClient');
+//$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
     
 $app->run();
