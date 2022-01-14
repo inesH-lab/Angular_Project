@@ -1,0 +1,21 @@
+<p>panier works!</p>
+<h2>Panier</h2>
+<div class="divider"></div>
+
+<div class="container mb-3">
+    <ul class="list-group" style="background-color: white">
+        <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let product of liste$ | async">
+
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">{{ product.info }}</div>
+                {{ product.id }}
+            </div>
+            
+            <div style="margin-left: 20px">
+                <button (click)="DeleteProduct(product)" class="btn btn-orange" type="button">Enlever</button>
+                <button (click)="EmptyBasket(product)" class="btn btn-orange" type="button">Vider le panier</button>
+            </div>
+        </li>
+    </ul>
+    
+</div>      

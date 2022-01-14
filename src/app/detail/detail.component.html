@@ -1,0 +1,9 @@
+<p>detail works!</p>
+<tbody *ngFor="let product of ProductList">
+    <tr class="table-active">
+      <td> {{product.name}}</td>
+      <a class="nav-link" routerLink="['/product', p.id]" >Details {{product.detail}}</a>
+      <td>{{product.detail}}</td>
+   
+    </tr>
+  </tbody>
