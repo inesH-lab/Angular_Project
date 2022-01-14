@@ -1,0 +1,3 @@
+[submodule "FRONTEND/src"]
+	path = FRONTEND/src
+	url = git//github.com/inesH-lab/Angular_Project.git
