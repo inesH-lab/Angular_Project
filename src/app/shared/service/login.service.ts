@@ -6,8 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class LoginService {
-  urlApiLogin: string = "/api/login";
-  urlApiAuth: string = "/api/auth/";
+  urlApiLogin: string = "/BACKEND/api/login";
+  urlApiAuth: string = "/BACKEND/api/auth/";
 
   constructor(private Http: HttpClient) { }
   public postLogin(login: string, password: string): Observable<User>{
