@@ -7,7 +7,7 @@ use \Firebase\JWT\JWT;
 
 const JWT_SECRET = "inesines";
 
-require __DIR__. '../vendor/autoload.php';
+require __DIR__. '../../vendor/autoload.php';
 
 $options = [
     "attribute" => "token",
