@@ -18,11 +18,11 @@ class Config {
         $isDevMode = true;
         $config = Setup::createYAMLMetadataConfiguration(array(__DIR__ . "/config/yaml"), $isDevMode);
         $conn = array(
-            'host' => 'ec2-63-34-153-52.eu-west-1.compute.amazonaws.com',
+            'host' => 'ec2-34-199-98-66.compute-1.amazonaws.com',
             'driver' => 'pdo_pgsql',
-            'user' => 'fcijrquzikextq',
-            'password' => '5aaf1ffdebded57f6c6258bcf84d1148903193ce48e9648ee87bbc78e690a62b',
-            'dbname' => 'd83b92e9vigot1',
+            'user' => 'exfotzbjpdhfjq',
+            'password' => 'ac894ba40605f57c97db505b76ed452a19318b814acce7f7dcb139c660ecaebc',
+            'dbname' => 'd1l8d971qhs34t',
             'port' => '5432'
         );
         $this->entityManager = EntityManager::create($conn, $config);
