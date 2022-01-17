@@ -16,8 +16,8 @@ $options = [
     "secure" => false,
     "algorithm" => ["HS256"],
     "secret" => JWT_SECRET,
-    "path" => ["/api"],
-    "ignore" => ["/api/hello","/api/login","/api/createUser"],
+    "path" => ["/BACKEND/api"],
+    "ignore" => ["/BACKEND/api/hello","/BACKEND/api/login","/BACKEND/api/createUser"],
     "error" => function ($response, $arguments) {
         $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
         $response = $response->withStatus(401);
@@ -97,8 +97,8 @@ function postClient($request, $response, $args)
 
 
 $app = AppFactory::create();
-$app->get('/api/client/{login}', 'getClient');
-$app->post('/api/login', 'postClient');
+$app->get('/BACKEND/api/client/{login}', 'getClient');
+$app->post('/BACKEND/api/login', 'postClient');
 //$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
     
