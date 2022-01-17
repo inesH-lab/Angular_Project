@@ -6,7 +6,7 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 date_default_timezone_set('America/Lima');
-const JWT_SECRET = "azerty123456789";
+const JWT_SECRET = "inesines";
 
 class Config {
     private static ?Config $instance = null;

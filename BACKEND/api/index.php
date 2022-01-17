@@ -5,7 +5,7 @@ use Slim\Factory\AppFactory;
 use Tuupola\Middleware\HttpBasicAuthentication;
 use \Firebase\JWT\JWT;
 
-const JWT_SECRET = "cnamapi";
+const JWT_SECRET = "inesines";
 
 require __DIR__. '../vendor/autoload.php';
 
