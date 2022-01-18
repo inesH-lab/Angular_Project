@@ -10,7 +10,7 @@ const JWT_SECRET = "inesines";
 
 require __DIR__. '/../../vendor/autoload.php';
 require __DIR__. '/../../bootstrap.php';
-require_once __DIR__ . '/utils.php';
+require __DIR__. '/utils.php';
 $options = [
     "attribute" => "token",
     "header" => "Authorization",
@@ -110,6 +110,6 @@ $app->post('/BACKEND/api/login', 'postClient');
 
 //$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
-$app->add(new JwtAuthentication(Config::getInstance()->options));    
+//$app->add(new JwtAuthentication(Config::getInstance()->options));    
 $app->run();
 ?>
