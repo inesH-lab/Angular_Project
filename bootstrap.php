@@ -11,7 +11,7 @@ const JWT_SECRET = "inesines";
 class Config {
     private static ?Config $instance = null;
     public ?EntityManager $entityManager = null;
-    public Mixed $options = null;
+    public mixed $options = null;
 
     private function __construct()
     {
