@@ -104,9 +104,10 @@ function postClient($request, $response, $args)
 
 
 $app = AppFactory::create();
-$app->add(new JwtAuthentication(Config::getInstance()->options));
+
 $app->get('/BACKEND/api/client/{login}', 'getClient');
-$app->post('/BACKEND/api/auth', 'postClient');
+$app->post('/BACKEND/api/login', 'postClient');
+$app->add(new JwtAuthentication(Config::getInstance()->options));
 //$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
     
