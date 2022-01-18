@@ -84,15 +84,15 @@ function postClient($request, $response, $args)
         $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
         $client= $clientRepository->findOneBy(array("login"=> $login));
         if($client == null) {
-            $data["error"] = "t'existes pas";
+            
             $response = $response->withStatus(403);
-            $response->getBody()->write(json_encode($data));
-            return $response;
+            
         }
         $data["login"] = $client->getLogin();
         //$data["login"] =$login;
         $response = addHeaders($response);
-        $response = createJWT($response,$login);
+        $token_jwt = createJWT($response,$login);
+        //$response = createJWT($response,$login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
     }
@@ -107,7 +107,7 @@ function postClient($request, $response, $args)
 
 $app = AppFactory::create();
 $app->get('/BACKEND/api/client/{login}', 'getClient');
-$app->post('/BACKEND/api/auth', 'postClient');
+$app->post('/BACKEND/api/login', 'postClient');
 //$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
     
