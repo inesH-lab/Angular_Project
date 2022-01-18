@@ -83,11 +83,11 @@ function postClient($request, $response, $args)
     {
         $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
         $client= $clientRepository->findOneBy(array("login"=> $login));
-        //$data["login"] = $client->getLogin();
-        $data["login"] =$login;
+        $data["login"] = $client->getLogin();
+        //$data["login"] =$login;
         $response = addHeaders($response);
-        $token_jwt = createJWT($login);
-        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
+        $response = createJWT($response,$login);
+       // $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
     }
     else
