@@ -89,7 +89,7 @@ function postClient($request, $response, $args)
        // $data["login"] = $client->getLogin();
        $data["login"] =$login;
         $response = addHeaders($response);
-        $token_jwt = createJWT($response,$login);
+        $token_jwt = createJWT($response);
         //$response = createJWT($response,$login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
