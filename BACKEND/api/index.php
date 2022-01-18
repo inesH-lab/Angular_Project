@@ -93,7 +93,7 @@ function postClient($request, $response, $args)
         //$data["login"] =$login;
         $response = addHeaders($response);
         $response = createJWT($response,$login);
-       //$response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
+       $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
     }
     else
@@ -107,7 +107,7 @@ function postClient($request, $response, $args)
 
 $app = AppFactory::create();
 $app->get('/BACKEND/api/client/{login}', 'getClient');
-$app->post('/BACKEND/api/login', 'postClient');
+$app->post('/BACKEND/api/auth', 'postClient');
 //$app->get('/api/client/{login}', 'getClient');
 $app->add(new Tuupola\Middleware\JwtAuthentication($options));
     
