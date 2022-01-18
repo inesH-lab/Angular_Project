@@ -77,15 +77,15 @@ function postClient($request, $response, $args)
     $body = $request->getParsedBody();
     $login = $body["login"] ?? "";
     $password = $body["password"] ?? "";
-
+    global $entityManager;
     $err = $login == "" || $password == "";
     if (!$err)
     {
-        //$clientRepository = Config::getInstance()->entityManager->getRepository('Client');
-        //$client= $clientRepository->findOneBy(array("login"=> $login));
+        $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
+        $client= $clientRepository->findOneBy(array("login"=> $login));
         
-        //$data["login"] = $client->getLogin();
-       $data["login"] =$login;
+        $data["login"] = $client->getLogin();
+       //$data["login"] =$login;
         $response = addHeaders($response);
         $token_jwt = createJWT($response);
         //$response = createJWT($response,$login);
