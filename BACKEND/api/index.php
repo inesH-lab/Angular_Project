@@ -4,6 +4,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Tuupola\Middleware\HttpBasicAuthentication;
 use \Firebase\JWT\JWT;
+use Tuupola\Middleware\JwtAuthentication;
 
 const JWT_SECRET = "inesines";
 
@@ -102,6 +103,7 @@ function postClient($request, $response, $args)
 
 
 $app = AppFactory::create();
+$app->add(new JwtAuthentication(Config::getInstance()->options));
 $app->get('/BACKEND/api/client/{login}', 'getClient');
 $app->post('/BACKEND/api/login', 'postClient');
 //$app->get('/api/client/{login}', 'getClient');
