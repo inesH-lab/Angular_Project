@@ -37,7 +37,7 @@ export class AuthComponent implements OnInit {
           
           console.log("Connected !");
           this.user$ = this.loginservice.getLogin(this.login?.value);
-          this.router.navigate(['client/account']);
+          this.router.navigate(['product']);
         }
       )
     }
