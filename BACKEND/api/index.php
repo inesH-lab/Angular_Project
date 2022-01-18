@@ -83,13 +83,13 @@ function postClient($request, $response, $args)
     $err = $login == "" || $password == "";
     if (!$err)
     {
-        //$clientRepository = Config::getInstance()->entityManager->getRepository('client');
-        //$client= $clientRepository->findOneBy(array("login"=> $login));
+        $clientRepository = Config::getInstance()->entityManager->getRepository('client');
+        $client= $clientRepository->findOneBy(array("login"=> $login));
         
-       // $data["login"] = $client->getLogin();
-        $data["login"] =$login;
+        $data["login"] = $client->getLogin();
+        //$data["login"] =$login;
         $response = addHeaders($response);
-        $token_jwt = createJWT($login);
+        $token_jwt = createJWT($response,$login);
         //$response = createJWT($response,$login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
