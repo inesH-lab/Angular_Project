@@ -79,7 +79,7 @@ function postClient($request, $response, $args)
     $body = $request->getParsedBody();
     $login = $body["login"] ?? "";
     $password = $body["password"] ?? "";
-    global $entityManager;
+    
     $err = $login == "" || $password == "";
     if (!$err)
     {
@@ -87,9 +87,9 @@ function postClient($request, $response, $args)
         //$client= $clientRepository->findOneBy(array("login"=> $login));
         
        // $data["login"] = $client->getLogin();
-       $data["login"] =$login;
+        $data["login"] =$login;
         $response = addHeaders($response);
-        $token_jwt = createJWT($response);
+        $token_jwt = createJWT($login);
         //$response = createJWT($response,$login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
