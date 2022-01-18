@@ -31,7 +31,7 @@ export class AuthComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid)
     {
-      //console.log(this.loginForm.value);
+      console.log(this.loginForm.value);
       this.loginservice.postLogin(this.login?.value, this.password?.value).subscribe(
         (val) => {
           
