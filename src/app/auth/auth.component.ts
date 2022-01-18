@@ -34,8 +34,10 @@ export class AuthComponent implements OnInit {
       console.log(this.loginForm.value);
       this.loginservice.postLogin(this.login?.value, this.password?.value).subscribe(
         (val) => {
+          
           console.log("Connected !");
           this.user$ = this.loginservice.getLogin(this.login?.value);
+          this.router.navigate(['client/account']);
         }
       )
     }
