@@ -10,7 +10,7 @@ const JWT_SECRET = "inesines";
 
 require __DIR__. '/../../vendor/autoload.php';
 require __DIR__. '/../../bootstrap.php';
-
+require_once __DIR__ . '/utils.php';
 $options = [
     "attribute" => "token",
     "header" => "Authorization",
@@ -83,7 +83,7 @@ function postClient($request, $response, $args)
     $err = $login == "" || $password == "";
     if (!$err)
     {
-        $clientRepository = Config::getInstance()->entityManager->getRepository('client');
+        //$clientRepository = Config::getInstance()->entityManager->getRepository('client');
         //$client= $clientRepository->findOneBy(array("login"=> $login));
         
        // $data["login"] = $client->getLogin();
