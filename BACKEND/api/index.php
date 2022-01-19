@@ -106,6 +106,6 @@ $app = AppFactory::create();
 $app->get('/BACKEND/api/client/{login}', 'getClient');
 $app->post('/BACKEND/api/login', 'postClient');
 //$app->get('/api/client/{login}', 'getClient');
-$app->add(new Tuupola\Middleware\JwtAuthentication(Config::getInstance()->options));  
+$app->add(new Tuupola\Middleware\JwtAuthentication($options));  
 $app->run();
 ?>
