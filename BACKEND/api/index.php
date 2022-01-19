@@ -85,6 +85,7 @@ function postClient($request, $response, $args)
     if (!$err)
     {
         $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
+        //$clientRepository = Config::getInstance()->entityManager->getRepository('Client');
         $client= $clientRepository->findOneBy(array("login"=> $login));
         $data["login"] = $client->getLogin();
         //$data["login"] =$login;

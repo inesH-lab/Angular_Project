@@ -34,7 +34,6 @@ class Config {
             "regexp" => "/Bearer\s+(.*)$/i",
             "secure" => false,
             "algorithm" => ["HS256"],
-            "secret" => JWT_SECRET,
             "path" => ["/api"],
             "ignore" => ["/api/connexion", "/api/inscription"],
             "error" => function ($response, $arguments) {
