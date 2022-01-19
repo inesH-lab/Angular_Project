@@ -93,7 +93,7 @@
                             Adresse obligatoire
                        </div> 
                         <div *ngIf="Adresse.errors?.pattern">
-                                       L'adresse ne peut contenir que des lettres, des tirets, des points ou des espaces (>1)
+                                       Veuillez saisir une adresse valide!
                         </div>     
                    </div>
                      <!--Fin  Erreurs --> 
@@ -122,10 +122,10 @@
                      <!--Début  Erreurs -->
                      <div *ngIf="Email && Email.invalid && (Email.dirty || Email.touched)" class="aler alert-danger">
                         <div *ngIf="Email.errors?.required">
-                            Adresse obligatoire
+                            Email obligatoire
                        </div> 
                         <div *ngIf="Email.errors?.pattern">
-                                       L'adresse ne peut contenir que des lettres, des tirets, des points ou des espaces (>1)
+                                       Email non valide !
                         </div>     
                    </div>
                      <!--Fin  Erreurs --> 
@@ -140,10 +140,10 @@
                     <!--Début  Erreurs -->
                     <div *ngIf="Telephone && Telephone.invalid && (Telephone.dirty || Telephone.touched)" class="aler alert-danger">
                         <div *ngIf="Telephone.errors?.required">
-                            Adresse obligatoire
+                            Telephone obligatoire
                        </div> 
                         <div *ngIf="Telephone.errors?.pattern">
-                                       L'adresse ne peut contenir que des lettres, des tirets, des points ou des espaces (>1)
+                            Email non valide !
                         </div>     
                    </div>
                      <!--Fin  Erreurs --> 
@@ -156,10 +156,10 @@
                      <!--Début  Erreurs -->
                      <div *ngIf="Login && Login.invalid && (Login.dirty || Login.touched)" class="aler alert-danger">
                         <div *ngIf="Login.errors?.required">
-                            Adresse obligatoire
+                            Login obligatoire
                        </div> 
                         <div *ngIf="Login.errors?.pattern">
-                                       L'adresse ne peut contenir que des lettres, des tirets, des points ou des espaces (>1)
+                            Login non valide !
                         </div>     
                    </div>
                      <!--Fin  Erreurs --> 
@@ -171,10 +171,10 @@
                      <!--Début  Erreurs -->
                      <div *ngIf="Password && Password.invalid && (Password.dirty || Password.touched)" class="aler alert-danger">
                         <div *ngIf="Password.errors?.required">
-                            Adresse obligatoire
+                            Password obligatoire
                        </div> 
                         <div *ngIf="Password.errors?.pattern">
-                                       L'adresse ne peut contenir que des lettres, des tirets, des points ou des espaces (>1)
+                            Login non valide !
                         </div>     
                    </div>
                      <!--Fin  Erreurs --> 

@@ -1,24 +1,24 @@
-<p>auth works!</p>
+
 <div class=" text-center">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="row">
 
-            <div class="form-group">
+            <div class="form-group col-5">
                 <div *ngIf="login && login.invalid && (login.dirty || login.touched)" class="aler alert-danger">
                     <div *ngIf="login.errors?.required">
-                        Nom d'utilistateur obligatoire.
+                        Login obligatoire.
                     </div>
                     <div *ngIf="login.errors?.pattern">
-                        Le nom d'utilisateur ne peut contenir que des lettres, des tirets et des points.
+                        Nom d'utilisateur non valide! 
                     </div>                                     
                 </div>
-                <label for="login">Nom d'utilisateur</label>
+                <label for="login">Login</label>
                 <input type="text" id="login" class="form-control" formControlName="login">            
             </div>
-            <div class="form-group">
+            <div class="form-group col-5">
                 <div *ngIf="password && password.invalid && (password.dirty || password.touched)" class="aler alert-danger">
                     <div *ngIf="password.errors?.required">
-                       Mot de passe non valide
+                       Mot de passe non valide!
                     </div>                              
                 </div>
                 <label for="password">Mot de passe</label>

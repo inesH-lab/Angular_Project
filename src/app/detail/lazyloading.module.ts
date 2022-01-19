@@ -8,9 +8,10 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { NgxsModule } from '@ngxs/store';
 import { ProductState } from "../shared/states/product-state";
 import { DetailComponent } from "./detail.component";
+//RouterModule.forChild(appChild)
 const appChild: Routes = [
   {
-    path: '',
+    path: 'detail/:detail',
     component: DetailComponent,
   },
 ];

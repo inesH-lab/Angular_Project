@@ -1,15 +1,17 @@
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, NgForm, Validators } from '@angular/forms';
+import { Select, Store } from '@ngxs/store';
+import { DeleteAddress,AddAddress } from '../shared/actions/adresse-action';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { Adresse } from '../shared/models/adresse';
 import { Router } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { User } from '../Models/User.model';
-
+import { AdresseState } from '../shared/states/adresse-state';
 //import { UserService } from '../shared/service/User.service';
 import { TelephonePipe } from '../pipes/telephone.pipe';
-
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -37,7 +39,7 @@ export class FormComponent  implements OnInit{
   valid : boolean = false;
   newUser: User = {} as User;
   validated: boolean = false;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,private store:Store) {
     this.registerForm = this.formBuilder.group({
      Civilite: ['',[Validators.required]],
       Nom: ['',[Validators.required, Validators.pattern(/[a-zA-Z ,.'-]{3,}/)]],
@@ -51,6 +53,12 @@ export class FormComponent  implements OnInit{
       Login: ['',[Validators.required,,Validators.maxLength(15), Validators.pattern(/[a-zA-Z ,.'-]{3,}/)]],
     });
    }
+   adresse : Observable<Adresse[]> | undefined;
+   @Select(AdresseState.getNbAdresses) nb$!: Observable<number>;
+  
+  @Select(AdresseState.getListeAdresse) liste$!: Observable<Adresse[]> ;
+  
+ 
   ngOnInit(): void {  }
  
 

@@ -11,13 +11,12 @@ import { Subject } from 'rxjs';
 export class ProductserviceService {
 
   public SubjectProducts = new Subject<Productmodel[]>();
+  SubjectProducts$: any;
 
   constructor(private httpClient: HttpClient) {}
 
   public product: Productmodel []= [];
-  //public getProduct(): Productmodel [] {
-  //  return this.product;
- // }
+  
   public emitProduct() {
     this.SubjectProducts.next(this.product.slice());
   }
@@ -34,4 +33,24 @@ export class ProductserviceService {
       console.log(error);}
     
     )}
+
+    getSingleProduct(key: string) {
+      this.httpClient.get<Productmodel[]>("../../assets/products.json").subscribe(
+        (data: Productmodel[]) => {
+          if(data) {
+            data.find(
+              (p) => {
+                if(p.hero === key){
+                  this.product = data;
+                }
+              }
+            )
+            this.emitProduct();
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
 }

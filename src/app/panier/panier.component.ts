@@ -13,7 +13,7 @@ import { ProductState } from '../shared/states/product-state';
 import { DeleteProduct } from '../shared/actions/product-actions';
 import { EmptyBasket } from '../shared/actions/product-actions';
 import { Store } from '@ngxs/store';
-//import { Store } from '@ngxs/store';
+
 
 @Component({
   selector: 'app-panier',

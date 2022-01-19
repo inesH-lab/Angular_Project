@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProductserviceService } from '../productservice.service';
 import { Productmodel } from '../productmodel.model';
-//import { Productmodel } from '../../../../src/app/productmodel.model';
+
 import { Store } from '@ngxs/store';
 import { Product } from '../shared/models/product';
 import { AddProduct } from '../shared/actions/product-actions';

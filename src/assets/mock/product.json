@@ -1,33 +1,35 @@
 [{
-	"name": "hero Product",
-	"detail": "Lorem ipsum dolor sit amet",
+	"name": "Produit 1",
+	"detail": "Ceci est le detail du prod1",
 	"price": "99",
 	"category": "meal",
 	"id": "7",
-	"info": "OMG This just came out today!",
-	"image": "http://placehold.it/940x300/999/CCC"
+	"hero": "h5",
+	"info": "OMG This just came out today!"
 },
 {
-	"name": "CMONPROD",
-	"detail": "Lorem ipsum dolor sit amet",
+	"name": "Produit 2",
+	"detail": "Ceci est le detail du prod2",
 	"price": "100",
 	"category": "cake",
+	"hero": "h5",
 	"id": "8",
 	"info": "NICE!",
 	"image": "http://placehold.it/940x300/999/CCC"
 },
 {
-	"name": "test",
-	"detail": "Lorem ipsum dolor sit amet",
+	"name": "Produit 4",
+	"detail": "Ceci est le detail du prod3",
 	"price": "300",
 	"category": "cake",
+	"hero": "h5",
 	"id": "11",
 	"info": "noice!",
 	"image": "http://placehold.it/940x300/999/CCC"
 },
 {
-	"name": "Product 1",
-	"detail": "Lorem ipsum dolor sit amet",
+	"name": "Product 3",
+	"detail": "Ceci est le detail du prod4",
 	"price": "99",
 	"category": "shampoo",
 	"id": "9",

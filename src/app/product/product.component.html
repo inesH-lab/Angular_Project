@@ -5,7 +5,7 @@
 <div class="row g-3" id="filters" >
   <div class="form-check form-check-inline col-auto">
     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="all" value="" [(ngModel)]="category" checked>
-    <label class="form-check-label" for="all">Tous les genres</label>
+    <label class="form-check-label" for="all">All</label>
 </div>
   <div class="form-check form-check-inline col-auto">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="cake" value="cake" [(ngModel)]="category">
@@ -40,6 +40,10 @@
   <div>
       Prix : {{ product.price }} €
   </div>
+  <div>
+    
+    <a class="nav-link" routerLink="/detail/detail/{{product.detail}}" >Details</a>
+</div>
   <div class="container">
   <div class="row justify-content-md-center">
     <div class="col-md-auto"> 

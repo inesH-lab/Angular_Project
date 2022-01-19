@@ -37,11 +37,12 @@ const appRoutes: Routes = [
     component: FormComponent
   },
   { 
-    path: 'product/:id' , 
-    loadChildren: () => import('./detail/lazyloading.module'). then(module  => module.LazyLoadingModule) },
+    path: 'detail' , 
+    loadChildren: () => import('./detail/lazyloading.module'). then((m)  => m.LazyLoadingModule) },
 
   { 
-    path: '' , component: FormComponent}
+    path: '' , component: FormComponent},
+    
   ];
   
 @NgModule({
