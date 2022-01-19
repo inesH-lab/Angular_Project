@@ -1,6 +1,6 @@
 <?php
 
-require_once "/BACKEND/vendor/autoload.php";
+require_once "BACKEND/vendor/autoload.php";
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
@@ -34,6 +34,7 @@ class Config {
             "regexp" => "/Bearer\s+(.*)$/i",
             "secure" => false,
             "algorithm" => ["HS256"],
+            "secret" => JWT_SECRET,
             "path" => ["/api"],
             "ignore" => ["/api/connexion", "/api/inscription"],
             "error" => function ($response, $arguments) {
