@@ -8,8 +8,8 @@ use Tuupola\Middleware\JwtAuthentication;
 
 const JWT_SECRET = "inesines";
 
-require __DIR__. '/../../vendor/autoload.php';
-require __DIR__. '/../../bootstrap.php';
+require '/../../vendor/autoload.php';
+//require __DIR__. '/../../bootstrap.php';
 
 $options = [
     "attribute" => "token",
