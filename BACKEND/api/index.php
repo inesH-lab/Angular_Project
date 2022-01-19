@@ -8,8 +8,8 @@ use Tuupola\Middleware\JwtAuthentication;
 
 const JWT_SECRET = "inesines";
 
-require '/../../vendor/autoload.php';
-require __DIR__. '/../../bootstrap.php';
+require_once "/../../vendor/autoload.php";
+//require __DIR__. '/../../bootstrap.php';
 
 $options = [
     "attribute" => "token",
@@ -88,7 +88,7 @@ function postClient($request, $response, $args)
         $data["login"] = $client->getLogin();
         //$data["login"] =$login;
         $response = addHeaders($response);
-        $token_jwt = createJWT($response);
+        $token_jwt = createJWT($login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
         $response->getBody()->write(json_encode($data));
     }
