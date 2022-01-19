@@ -8,8 +8,8 @@ use Tuupola\Middleware\JwtAuthentication;
 
 const JWT_SECRET = "inesines";
 
-require_once "../../vendor/autoload.php";
-require_once "../../bootstrap.php";
+require_once "../vendor/autoload.php";
+
 //require __DIR__. '/../../bootstrap.php';
 
 $options = [
@@ -84,7 +84,7 @@ function postClient($request, $response, $args)
     $err = $login == "" || $password == "";
     if (!$err)
     {
-        $clientRepository = Config::getInstance()->entityManager->getRepository('client');
+        $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
         $client= $clientRepository->findOneBy(array("login"=> $login));
         $data["login"] = $client->getLogin();
         //$data["login"] =$login;
