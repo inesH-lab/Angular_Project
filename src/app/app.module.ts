@@ -36,6 +36,10 @@ const appRoutes: Routes = [
     path: 'formulaire',
     component: FormComponent
   },
+  {
+    path: 'panier',
+    component: PanierComponent
+  },
   { 
     path: 'detail' , 
     loadChildren: () => import('./detail/lazyloading.module'). then((m)  => m.LazyLoadingModule) },

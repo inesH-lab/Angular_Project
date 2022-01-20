@@ -28,14 +28,15 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  CreateAccount(){
+    this.router.navigate(['formulaire']);
+  }
   onSubmit(): void {
     if (this.loginForm.valid)
     {
       console.log(this.loginForm.value);
       this.loginservice.postLogin(this.login?.value, this.password?.value).subscribe(
         (val) => {
-          
-          console.log("Connected !");
           this.user$ = this.loginservice.getLogin(this.login?.value);
           this.router.navigate(['product']);
         }

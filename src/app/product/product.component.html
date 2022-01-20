@@ -1,3 +1,6 @@
+
+
+
 <div>
 <div class="input-group mb-3">
   <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" [(ngModel)]="type">
@@ -19,36 +22,54 @@
   <div class="form-check form-check-inline col-auto">
       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="meal" value="meal" [(ngModel)]="category">
       <label class="form-check-label" for="meal">meal</label>
-  </div>
-  
+  </div> 
 </div>
+
 </div>
-<div class="album py-5 bg-light">
+<div class="row justify-content-md-center">
 <div class="card text-center" *ngFor="let product of ProductList | productPipe:type |productPipeCategory:category">
-  <div>
-    {{ product.id }}
-  </div>
-  <div>
-    Nom : {{ product.name }} 
-  </div>
-  <div>
-    Info : {{ product.info }}
-  </div>
-  <div>
-    category : {{ product.category }}
-  </div>
-  <div>
-      Prix : {{ product.price }} €
-  </div>
-  <div>
-    
-    <a class="nav-link" routerLink="/detail/detail/{{product.detail}}" >Details</a>
-</div>
+  <div class="container">
+    <div class="col-xs-12 col-md-6"> 
+                    <!-- First product box start here-->
+                    <div class="prod-info-main prod-wrap clearfix">
+                          <div class="row">
+                               <div class="col-md-5 col-sm-12 col-xs-12">  
+                               
+                      </div>   
+         <div class="col-md-7 col-sm-12 col-xs-12">   
+                      <div class="product-deatil">   
+                                   <h5 class="name">  
+                                   <div>
+                                    {{ product.name }}  
+                                  </div>
+                                  
+                                   <span>{{ product.category }}</span>  
+                                                        
+                            </h5> 
+                                <p class="price-container">  
+                                 <span>{{ product.price }} €</span>  
+                               </p> 
+                  <span class="tag1"></span>
+       </div>
+       <div class="description">
+          <p>{{ product.info }} </p>
+       </div>
+          <div class="product-info smart-form">
+             <div class="row">  
+             <div class="col-md-12">
+              <a  (click)="addProduct(product)" class="btn btn-danger">Add to cart</a> 
+                 <a routerLink="/detail/detail/{{product.detail}}" class="btn btn-info">More info</a> 
+           </div>  
+        </div>  
+       </div>
+      </div> 
+      </div>
+     </div>
+ 
+ 
   <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-auto"> 
-      <button (click)="addProduct(product)">Ajouter</button>
-    </div>
+   
          
   </div>
 </div>
@@ -78,6 +99,5 @@
   </tbody>
 </table>
 -->
-  <app-panier></app-panier>
-
+  
 
