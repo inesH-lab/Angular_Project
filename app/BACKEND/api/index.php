@@ -22,7 +22,7 @@ $options = [
     "path" => ["/BACKEND/api"],
     "ignore" => ["/BACKEND/api/hello","/BACKEND/api/login","/BACKEND/api/createUser"],
     "error" => function ($response, $arguments) {
-        $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'JWT Non valide');
+        $data = array('ERREUR' => 'Connexion', 'ERREUR' => 'ERROR JWT');
         $response = $response->withStatus(401);
         return $response->withHeader("Content-Type", "application/json")->getBody()->write(json_encode($data));
     }
@@ -84,11 +84,11 @@ function postClient($request, $response, $args)
     $err = $login == "" || $password == "";
     if (!$err)
     {
-        $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
+      //  $clientRepository = Config::getInstance()->entityManager->getRepository('Client');
         //$clientRepository = Config::getInstance()->entityManager->getRepository('Client');
-        $client= $clientRepository->findOneBy(array("login"=> $login));
-        $data["login"] = $client->getLogin();
-        //$data["login"] =$login;
+        //$client= $clientRepository->findOneBy(array("login"=> $login));
+        //$data["login"] = $client->getLogin();
+        $data["login"] =$login;
         $response = addHeaders($response);
         $token_jwt = createJWT($login);
        $response = $response->withHeader("Authorization", "Bearer {$token_jwt}"); 
